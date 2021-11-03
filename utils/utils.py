@@ -78,3 +78,19 @@ def get_game_df(san : str):
             turn = pd.Series(turn, index = df_game.columns)
             df_game = df_game.append(turn, ignore_index=True)
     return df_game
+
+
+def add_images(game_df : pd.DataFrame)->pd.DataFrame:
+    df_icons = {
+        'r': 'icons/wr.svg', 'R': 'icons/br.svg',
+        'n': 'icons/wn.svg', 'N': 'icons/bn.svg',
+        'b': 'icons/wb.svg', 'B': 'icons/bb.svg',
+        'q': 'icons/wq.svg', 'Q': 'icons/bq.svg',
+        'k': 'icons/wk.svg', 'K': 'icons/bk.svg',
+        'p': 'icons/wp.svg', 'P': 'icons/bp.svg'
+    }
+    icons = []
+    for piece in df_game['piece']:
+        icons.append(df_icons[piece])
+    game_df['icon'] = icons
+    return game_df
