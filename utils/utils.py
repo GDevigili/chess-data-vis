@@ -90,7 +90,7 @@ def add_images(game_df : pd.DataFrame)->pd.DataFrame:
         'p': 'icons/wp.svg', 'P': 'icons/bp.svg'
     }
     icons = []
-    for piece in df_game['piece']:
+    for piece in game_df['piece']:
         icons.append(df_icons[piece])
     game_df['icon'] = icons
     return game_df
